@@ -13,7 +13,7 @@ Function Convert-LocalToUncPath {
 		System.String
 	.EXAMPLE
 		Convert-LocalToUncPath -LocalPath "C:\ProgramData\Microsoft" -Server "MyServer"
-		Convertit le chemin C:\ProgramData\Cegid en chemin UNC : \\MyServer\C$\ProgramData\Microsoft
+		Convertit le chemin C:\ProgramData\Microsoft en chemin UNC : \\MyServer\C$\ProgramData\Microsoft
 	.NOTES
 	.LINK
 	#>
