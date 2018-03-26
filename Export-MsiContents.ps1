@@ -3,7 +3,7 @@ Function Export-MsiContents {
 	.SYNOPSIS
 		Extrait les fichiers d'un msi
 	.DESCRIPTION
-		Renvoit le chemin du répertoire contenant les fichiers extraits
+		Renvoie le répertoire contenant les fichiers extraits
 	.PARAMETER MsiPath
 		Chemin du msi
 	.PARAMETER TargetDirectory
@@ -12,7 +12,7 @@ Function Export-MsiContents {
 		Dans tous les cas, un répertoire du nom du msi est crée dans le répertoire précisé
 	.INPUTS
 	.OUTPUTS
-		System.String
+		System.IO.DirectoryInfo
 	.EXAMPLE
 		Export-MsiContents -MsiPath 'D:\DACFramework.msi'
 	.EXAMPLE
@@ -22,7 +22,8 @@ Function Export-MsiContents {
 	#>
 	[CmdletBinding()]
 	param(
-		[Parameter(Mandatory=$true,HelpMessage="Chemin du msi")][ValidateNotNullOrEmpty()]
+		[Parameter(Mandatory=$true,HelpMessage="Chemin du msi")]
+			[ValidateNotNullOrEmpty()]
 			[ValidateScript({Test-Path $_ -PathType Leaf})]
 			[ValidateScript({$_.EndsWith(".msi")})]
 			[string]$MsiPath,
@@ -51,7 +52,7 @@ Function Export-MsiContents {
 		if($ExportResult -ne 0){
 			throw "Erreur lors de l'extraction du contenu du msi (code retour : $ExportResult)"
 		}
-		Return $FinalFolder
+		Return $(Get-Item $FinalFolder)
 	}catch{
 		Throw "Appel de la fonction $($MyInvocation.MyCommand) en erreur : $_"
 	}
