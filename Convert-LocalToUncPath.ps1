@@ -12,8 +12,8 @@ Function Convert-LocalToUncPath {
 	.OUTPUTS
 		System.String
 	.EXAMPLE
-		Convert-LocalToUncPath -LocalPath "C:\ProgramData\Cegid" -Server "S119700IIS001"
-		Convertit le chemin C:\ProgramData\Cegid en chemin UNC : \\S119700IIS001\C$\ProgramData\Cegid
+		Convert-LocalToUncPath -LocalPath "C:\ProgramData\Microsoft" -Server "MyServer"
+		Convertit le chemin C:\ProgramData\Cegid en chemin UNC : \\MyServer\C$\ProgramData\Microsoft
 	.NOTES
 	.LINK
 	#>
