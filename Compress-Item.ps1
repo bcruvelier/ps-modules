@@ -1,27 +1,4 @@
 Function Compress-Item {
-	param(
-		[Parameter(Mandatory=$true,Position=0,HelpMessage="Fichier/Répertoire à compresser")]
-			[ValidateScript({Test-Path $_})]
-			[string]$FilePath,
-		
-		[Parameter(Mandatory=$false,Position=1,HelpMessage="Taille de chaque split (en Mo)")]
-			[string]$SplitSize = '',
-		
-		[Parameter(Mandatory=$false,Position=2,HelpMessage="Mot de passe de l'archive")]
-			[string]$Password = '',
-		
-		[Parameter(Mandatory=$false,Position=3,HelpMessage="Nom de l'archive")]
-			[string]$ZipName = '',
-		
-		[Parameter(Mandatory=$false,Position=4,HelpMessage="Chemin de l'archive")]
-			[ValidateScript({Test-Path $_ -PathType Container})][string]$ZipPath = '',
-		
-		[Parameter(Mandatory=$false,Position=5,HelpMessage="Niveau de compression")]
-			[ValidateSet('0','1','3','5','7','9')]
-			[int]$CompressionLevel = 5,
-		
-			[switch]$Overwrite
-		)
 	<# 
 	.SYNOPSIS
 		Compresse un fichier/répertoire
@@ -60,6 +37,29 @@ Function Compress-Item {
 	.LINK
 		https://sevenzip.osdn.jp/chm/cmdline/switches/method.htm
 	#>
+	param(
+		[Parameter(Mandatory=$true,Position=0,HelpMessage="Fichier/Répertoire à compresser")]
+			[ValidateScript({Test-Path $_})]
+			[string]$FilePath,
+		
+		[Parameter(Mandatory=$false,Position=1,HelpMessage="Taille de chaque split (en Mo)")]
+			[string]$SplitSize = '',
+		
+		[Parameter(Mandatory=$false,Position=2,HelpMessage="Mot de passe de l'archive")]
+			[string]$Password = '',
+		
+		[Parameter(Mandatory=$false,Position=3,HelpMessage="Nom de l'archive")]
+			[string]$ZipName = '',
+		
+		[Parameter(Mandatory=$false,Position=4,HelpMessage="Chemin de l'archive")]
+			[ValidateScript({Test-Path $_ -PathType Container})][string]$ZipPath = '',
+		
+		[Parameter(Mandatory=$false,Position=5,HelpMessage="Niveau de compression")]
+			[ValidateSet('0','1','3','5','7','9')]
+			[int]$CompressionLevel = 5,
+		
+			[switch]$Overwrite
+		)
 	try{
 		if( -not(test-path "$env:ProgramFiles\7-Zip\7z.exe") ){
 			throw "$env:ProgramFiles\7-Zip\7z.exe needed"
