@@ -3,7 +3,7 @@ Function Convert-LocalToUncPath {
 	.SYNOPSIS
 		Convertit un chemin local en chemin UNC.
 	.DESCRIPTION
-    Renvoit le chemin UNC
+    	Renvoit le chemin UNC
 	.PARAMETER LocalPath
 		Chemin Local à convertir. 
 	.PARAMETER Server
@@ -19,8 +19,13 @@ Function Convert-LocalToUncPath {
 	#>
 	[CmdletBinding()]
 	param(
-		[Parameter(Mandatory=$true,Position=0,HelpMessage="Chemin local")][ValidateNotNullOrEmpty()][string]$LocalPath,
-		[parameter(Mandatory=$true,Position=1,HelpMessage="Serveur")][ValidateNotNullOrEmpty()][string]$Server
+		[Parameter(Mandatory=$true,Position=0,HelpMessage="Chemin local")]
+			[ValidateNotNullOrEmpty()]
+			[string]$LocalPath,
+		
+		[parameter(Mandatory=$true,Position=1,HelpMessage="Serveur")]
+			[ValidateNotNullOrEmpty()]
+			[string]$Server
 	)
 	try{
 		if(([Uri]$LocalPath).IsUnc){
