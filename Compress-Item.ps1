@@ -27,10 +27,10 @@ Function Compress-Item {
 	.OUTPUTS
 		System.IO.FileInfo
 	.EXAMPLE
-		Compress-CEGIDItem -FilePath 'D:\Test'
+		Compress-Item -FilePath 'D:\Test'
 		Compresse le répertoire D:\Test vers D:\Test.zip
 	.EXAMPLE
-		Compress-CEGIDItem -FilePath 'D:\Test' -Password 'MyPass123' -SplitSize 2 -ZipName 'MyZip' -CompressionLevel 0
+		Compress-Item -FilePath 'D:\Test' -Password 'MyPass123' -SplitSize 2 -ZipName 'MyZip' -CompressionLevel 0
 		Compresse le répertoire D:\Test en fichiers de 2Mo nommés MyZip.zip.00x sans compression avec le mot de passe d'archive MyPass123
 	.NOTES
 		7-Zip doit être accessible sous Program Files\7-Zip\7z.exe
